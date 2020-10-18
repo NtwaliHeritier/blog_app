@@ -1,13 +1,7 @@
-<%=link "New User", to: Routes.post_path(@conn, :new)%>
-<table>
-    <tr>
-        <td>TITLE</td>
-        <td>BODY</td>
-    </tr>
+<%=link "New Post", to: Routes.post_path(@conn, :new)%>
 <%=for post <- @posts do%>
-    <tr>
-        <td><%=post.title%></td>
-        <td><%=post.body%></td>
-    </tr>
+<p><%=post.title%></p>
+<p><%=post.body%></p>
+<%=link "Comments", to: Routes.post_comment_path(@conn, :index, post)%>
+<p>---------------------------</p>
 <%end%>
-</table>

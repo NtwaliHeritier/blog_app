@@ -106,6 +106,10 @@ defmodule BlogApp.Blog do
     Post.changeset(post, attrs)
   end
 
+  def preloading(post, param) do
+    Repo.preload(post, param)
+  end
+
   alias BlogApp.Blog.Comment
 
   @doc """

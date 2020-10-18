@@ -12,4 +12,9 @@ defmodule BlogAppWeb.CommentController do
                 redirect(conn, to: Routes.post_path(conn, :show, post))
         end
     end
+
+    def index(conn, %{"post_id"=>post_id}) do
+        post=Blog.get_post!(post_id)
+        render(conn, :index, comments: post.comments)
+    end
 end

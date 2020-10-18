@@ -1,0 +1,5 @@
+<%=for comment <- @comments do%>
+    <p><%=comment.author%></p>
+    <p><%=comment.body%></p>
+<%end%>
+<%=link "Back", to: Routes.post_path(@conn, :index)%>
