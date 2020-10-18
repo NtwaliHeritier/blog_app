@@ -18,7 +18,9 @@ defmodule BlogApp.Blog do
 
   """
   def list_posts do
-    Repo.all(Post)
+    Post
+    |> Repo.all
+    |> Repo.preload(:comments)
   end
 
   @doc """
@@ -104,10 +106,6 @@ defmodule BlogApp.Blog do
   """
   def change_post(%Post{} = post, attrs \\ %{}) do
     Post.changeset(post, attrs)
-  end
-
-  def preloading(post, param) do
-    Repo.preload(post, param)
   end
 
   alias BlogApp.Blog.Comment

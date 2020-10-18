@@ -1,7 +1,8 @@
-<%=link "New Post", to: Routes.post_path(@conn, :new)%>
+<div style="background-color: black; color: white; margin-bottom: 20px"><%=link "New Post", to: Routes.post_path(@conn, :new)%></div>
 <%=for post <- @posts do%>
-<p><%=post.title%></p>
+<p><%=link post.title, to: Routes.post_path(@conn, :show, post)%></p>
 <p><%=post.body%></p>
-<%=link "Comments", to: Routes.post_comment_path(@conn, :index, post)%>
+<%noComments=if length(post.comments)>1, do: "comments", else: "comment"%>
+<%=link "#{length(post.comments)} #{noComments}", to: Routes.post_comment_path(@conn, :index, post)%>
 <p>---------------------------</p>
 <%end%>
